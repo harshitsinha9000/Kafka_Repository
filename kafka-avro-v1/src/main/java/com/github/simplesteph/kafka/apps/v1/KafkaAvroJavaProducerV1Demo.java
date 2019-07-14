@@ -28,7 +28,7 @@ public class KafkaAvroJavaProducerV1Demo {
         Customer customer = Customer.newBuilder()
                 .setAge(34)
                 .setAutomatedEmail(false)
-                .setFirstName("John")
+                .setFirstName("John2")
                 .setLastName("Doe")
                 .setHeight(178f)
                 .setWeight(75f)

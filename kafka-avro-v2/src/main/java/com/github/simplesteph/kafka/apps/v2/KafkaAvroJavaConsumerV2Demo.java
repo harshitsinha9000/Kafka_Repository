@@ -1,5 +1,6 @@
 package com.github.simplesteph.kafka.apps.v2;
 
+
 import com.example.Customer;
 import io.confluent.kafka.serializers.KafkaAvroDeserializer;
 import org.apache.kafka.clients.consumer.ConsumerRecord;

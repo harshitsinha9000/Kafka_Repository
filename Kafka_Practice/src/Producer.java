@@ -1,15 +1,15 @@
 import java.util.Arrays;
+
 import java.util.Properties;
 import java.util.concurrent.ExecutionException;
 import java.util.function.Supplier;
-
+import org.slf4j.*;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.clients.producer.Callback;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
-
 
 class MyCallBack implements Callback
 {
@@ -26,6 +26,8 @@ public class Producer {
 
 	public static void RunProducer() throws InterruptedException, ExecutionException {
 		
+		Logger logger=LoggerFactory.getLogger(Producer.class);	
+		
 		Properties props=new Properties();
 		props.setProperty("bootstrap.servers","localhost:9092");
 		props.setProperty("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
@@ -39,9 +41,11 @@ public class Producer {
 		try {
 		for(int i=0;i<10;i++)
 			producer.send(new ProducerRecord("topic1",Integer.toString(i),"test message - "+i));
+			//producer.send(new ProducerRecord());
 		}
 		catch(Exception e)
 		{
+			//logger.
 			e.printStackTrace();
 		}
 		finally

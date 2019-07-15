@@ -1,6 +1,8 @@
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Properties;
 import java.util.function.Supplier;
+import org.slf4j.*;
 
 import org.apache.kafka.clients.consumer.*;
 
@@ -9,6 +11,8 @@ public class Consumer {
 	
 	public static void RunConsumer()
 	{
+	//Logger logger=LoggerFactory.getLogger(arg0)	
+		
 	Properties props=new Properties();
 	props.setProperty("bootstrap.servers","localhost:9092");
 	props.setProperty("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
@@ -21,6 +25,7 @@ public class Consumer {
 	
 	KafkaConsumer<String,Supplier> consumer=new KafkaConsumer<String,Supplier>(props);
 	consumer.subscribe(Arrays.asList("topic1"));
+	
 	
 	try
 	{

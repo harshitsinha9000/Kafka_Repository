@@ -5,9 +5,8 @@ import java.util.function.Supplier;
 import org.slf4j.*;
 
 import org.apache.kafka.clients.consumer.*;
-import org.apache.kafka.common.serialization.StringDeserializer;
 
-public class Consumer {
+public class Consumer2 {
 	// TODO Auto-generated method stub
 	
 	public static void RunConsumer()
@@ -16,8 +15,8 @@ public class Consumer {
 		
 	Properties props=new Properties();
 	props.setProperty("bootstrap.servers","localhost:9092");
-	props.setProperty("value.deserializer", StringDeserializer.class.getName());
-	props.setProperty("key.deserializer", StringDeserializer.class.getName());
+	props.setProperty("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+	props.setProperty("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
 	props.setProperty("heartbeat.interval.ms", "3000");
 	props.setProperty("session.timeout.ms","300000");
 	props.setProperty("enable.auto.commit","false");
@@ -50,8 +49,9 @@ public class Consumer {
 	}finally {
 		consumer.close();
     }
+	
 }
 	public static void main(String[] args) {
-		Consumer.RunConsumer();
+		Consumer2.RunConsumer();
 	}
 }

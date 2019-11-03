@@ -10,10 +10,10 @@ public class Invoker_class {
 		Producer.RunProducer();
 		
 		//Thread sleep
-		Thread.sleep(10000);
+		Thread.sleep(10000000);
 		
 		//Consumer invoked
-		Consumer.RunConsumer();
+		//Consumer.RunConsumer();
 		
 		
 	}

@@ -9,6 +9,7 @@ import org.apache.kafka.clients.producer.Callback;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
+import org.apache.kafka.common.serialization.StringSerializer;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 
 class MyCallBack implements Callback
@@ -30,10 +31,11 @@ public class Producer {
 		
 		Properties props=new Properties();
 		props.setProperty("bootstrap.servers","localhost:9092");
-		props.setProperty("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
-		props.setProperty("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+		props.setProperty("key.serializer", StringSerializer.class.getName());
+		props.setProperty("value.serializer", StringSerializer.class.getName());
 //		props.setProperty("acks", "all");
 		props.setProperty("retries", "2");
+		//props.setProperty("group.id", "1");
 		
 		KafkaProducer<String,String> producer=new KafkaProducer<String,String>(props); 
 		//Read from java file
@@ -42,11 +44,12 @@ public class Producer {
 		for(int i=0;i<10;i++)
 			producer.send(new ProducerRecord("topic1",Integer.toString(i),"test message - "+i));
 			//producer.send(new ProducerRecord());
+			producer.flush();
 		}
 		catch(Exception e)
 		{
 			//logger.
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		finally
 		{

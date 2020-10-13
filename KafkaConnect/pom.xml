@@ -8,7 +8,7 @@
 
     <properties>
         <kafka.version>0.10.2.0-cp1</kafka.version>
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
         <source>1.8.0</source>
         <target>1.8.0</target>
     </properties>
